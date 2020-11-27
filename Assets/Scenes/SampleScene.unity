@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.26225072, g: 0.26225072, b: 0.26225072, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 15912179}
   - component: {fileID: 15912178}
   m_Layer: 0
-  m_Name: side2
+  m_Name: wallLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.36124954, g: 0.40251508, b: 0.7735849, a: 0.5529412}
+  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 253126205}
   playerName: pc
-  Score: {fileID: 1390060514}
+  score: {fileID: 1390060514}
 --- !u!1 &240107042
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 240107045}
   - component: {fileID: 240107044}
   m_Layer: 0
-  m_Name: side1
+  m_Name: wallRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -677,7 +677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253126205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.308, z: -0.096024126}
+  m_LocalPosition: {x: 0, y: 0.253, z: -0.096024126}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -695,10 +695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfad4fd7a0299b448f963288c6263bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 253126206}
-  force: 2.5
+  speed: 2
   launchKey: 32
-  Score: {fileID: 1390060514}
+  score: {fileID: 1390060514}
 --- !u!1 &258816842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1331,7 @@ MonoBehaviour:
   ball: {fileID: 253126205}
   min: -0.86
   max: 0.93
-  offset: 0.5
+  offset: 1
 --- !u!54 &698141340
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1724,8 +1723,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.7873175, g: 0.7924528, b: 0.6167675, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.76455146, g: 0.7830189, b: 0.76904356, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2283,7 +2282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1530064642}
-  force: 40
+  force: 30
   right: 275
   left: 276
   score: {fileID: 1390060514}
@@ -2868,4 +2867,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 253126205}
   playerName: player
-  Score: {fileID: 1390060514}
+  score: {fileID: 1390060514}

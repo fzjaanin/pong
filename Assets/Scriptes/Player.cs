@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 	public KeyCode right;
 	public KeyCode left;
     public score score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,24 +21,22 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         if(score.isFinished==false){
-        if(Input.GetKey(left)){
+       if(Input.GetKey(left)){
         	rb.AddForce(-force*Time.deltaTime, 0, 0, ForceMode.Impulse);
-            UpdateScore();
+           
 
         }
 
          if(Input.GetKey(right)){
         	rb.AddForce(force*Time.deltaTime, 0, 0, ForceMode.Impulse);
-             UpdateScore();
+            
             
 
         }
+    
     }
     }
 
-    void UpdateScore(){
-        score.Score+=1;
-        
+   
 
-    }
 }

@@ -4,37 +4,86 @@ using UnityEngine;
 
 public class ball : MonoBehaviour
 {
-	public Rigidbody rb;
-	public float force;
-	private int rnd;
-	public KeyCode launchKey;
-	public score Score;
+    public float speed = 30;
+    float val=1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    	
-    }
+    private int rnd;
+    public KeyCode launchKey;
+    public score score;
 
-   public void launch(){
-
-    	rnd = Random.Range(0,2);
-    	rb.velocity = new Vector3(0f,0f,0f);
-
-    	if(Input.GetKey(launchKey)&Score.isFinished==false){
-
-    	     if(rnd==0)
-    	     rb.velocity=new Vector3(force,0f,force);
-             else
-             rb.velocity=new Vector3(-force,0f,-force);
-    	}
-    }
-
+  
     
-    // Update is called once per frame
-    void Update()
+    float findX(Vector3 ballPos, Vector3 paddlePos,
+                    float paddleHeight) {
+       
+        return (ballPos.x - paddlePos.x) / paddleHeight;
+    }
+
+    void OnCollisionEnter(Collision col) {
+    
+        if (col.gameObject.name == "player") {
+            
+            float x = findX(transform.position,
+                                col.transform.position,
+                                col.collider.bounds.size.x);
+
+            
+            Vector3 dir = new Vector3(x, 0f, 1).normalized;
+            GetComponent<Rigidbody>().velocity = dir * speed;
+            val=1;
+
+            score.Score+=5;
+        }
+
+       
+         if (col.gameObject.name == "paddle2") {
+            
+            float x = findX(transform.position,
+                                col.transform.position,
+                                col.collider.bounds.size.x);
+
+          
+            Vector3 dir = new Vector3(x,0f , -1).normalized;
+ 
+            GetComponent<Rigidbody>().velocity = dir * speed;
+            val=-1;
+        }
+
+        if(col.gameObject.name == "wallLeft"){
+            Vector3 dir = new Vector3(1f,0f , val).normalized;
+      
+            GetComponent<Rigidbody>().velocity = dir * speed;
+
+        }
+             
+             
+        
+
+        if(col.gameObject.name == "wallRight"){
+            Vector3 dir = new Vector3(-1f,0f , val).normalized;
+            
+            GetComponent<Rigidbody>().velocity = dir * speed;
+        }       
+        
+    }
+
+       public void launch(){
+
+        rnd = Random.Range(0,2);
+        GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+
+        if(Input.GetKey(launchKey)&score.isFinished==false){
+
+             if(rnd==0)
+             GetComponent<Rigidbody>().velocity = new Vector3(0.5f, 0f, 1f) * speed;
+             else
+             GetComponent<Rigidbody>().velocity = new Vector3(0.5f, 0f, -1f) * speed;
+        }
+    }
+
+     void Update()
     {
-    	if(rb.velocity.x==0)
+        if(GetComponent<Rigidbody>().velocity.x==0)
         launch();
     }
 }

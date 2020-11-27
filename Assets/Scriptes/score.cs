@@ -31,7 +31,7 @@ public class score : MonoBehaviour
         
     }
 
-    public void GUI(){
+    public void UI(){
     	pcScoreText.text=pcScore.ToString();
     	playerScoreText.text=playerScore.ToString();
     	

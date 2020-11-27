@@ -7,7 +7,7 @@ public class zones : MonoBehaviour
 {
 	public GameObject ball;
 	public string playerName;
-	public score Score;
+	public score score;
 
 
 
@@ -15,16 +15,18 @@ public class zones : MonoBehaviour
 
     	if(collider.tag=="ball"){
     		ball.transform.position = new Vector3(0f, 0.308f ,-0.096f);
-    		ball.GetComponent<ball>().launch();
+            ball.GetComponent<ball>().launch();
+    		//ball.GetComponent<ball>().launch();
     		if(playerName=="player"){
-    			Score.pcScore++;
-    			Score.GUI();
+    			score.pcScore++;
+    			score.UI();
 
 
     		}
     		else if(playerName=="pc"){
-    			Score.playerScore++; 
-    			Score.GUI();
+    			score.playerScore++; 
+    			score.UI();
+                score.Score+=50;
 
     		}
     		
